@@ -135,7 +135,7 @@ ubtu18cis_rule_2_2_3: true
 ubtu18cis_rule_2_2_4: true
 ubtu18cis_rule_2_2_5: true
 ubtu18cis_rule_2_2_6: true
-ubtu18cis_rule_2_3: false
+ubtu18cis_rule_2_3: true
 
 # Section 3 Fixes
 # Section 3 is Network Configuration (Disable unused network protocols and devices, Network Parameters(host), Network Parameters (host and router), Uncommon Network Protocols, and Firewall Configuration)
