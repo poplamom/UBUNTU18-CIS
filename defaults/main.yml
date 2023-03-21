@@ -401,7 +401,7 @@ ubtu18cis_root_pw: "Password1"
 # This will be the motd banner must not contain the below items in order to be compliant with Ubuntu 18 CIS
 # \m, \r, \s, \v or references to the OS platform
 ubtu18cis_warning_banner: |
-  'Authorized uses only. All activity may be monitored and reported.'
+  'This system is for authorized use only. Users (authorized or unauthorized) have no explicit or implicit expectation of privacy. Any or all uses of this system and all files on this system may be intercepted, monitored, recorded, copied, audited, inspected, and disclosed to authorized personnel, including law enforcement, as well as authorized officials of other agencies, both domestic and foreign. Unauthorized or improper use of this system may result in administrative disciplinary action and civil and criminal penalties. By using this system, the user consents to such interception, monitoring, recording, copying, auditing, inspection, and disclosure at the discretion of authorized personnel.'
 
 # Section 2 Control Variables
 # Control 2.1.1.1
@@ -570,7 +570,7 @@ ubtu18cis_pamd_pwhistory_remember: 5
 # Control 5.5.1.4
 # inactive the number of days of inactivity before the account will lock. Set to 30 day sor less to conform to CIS standards
 ubtu18cis_pass:
-  max_days: 365
+  max_days: 90
   min_days: 1
   warn_age: 7
   inactive: 30
