@@ -129,7 +129,10 @@
         line: "{{ item.line }}"
         insertafter: "^# end of pam-auth-update config"
       with_items:
-        # - { regexp: '^accout.*requisite.*pam_deny.so', line: 'account    requisite pam_george.so' }
+        - {
+            regexp: "^accout.*requisite.*pam_deny.so",
+            line: "account    requisite pam_deny.so",
+          }
         - {
             regexp: "^account.*required.*pam_tally.so",
             line: "account    required pam_tally.so",
@@ -144,6 +147,22 @@
     - rule_5.4.2
     - pamd
     - notimplemented
+
+# - name: Add pam_deny.so as a requisite for account management
+#   lineinfile:
+#     path: /etc/pam.d/common-account
+#     insertafter: "^account[ ]+required[ ]+pam_unix.so"
+#     line: "account requisite pam_deny.so"
+#   when:
+#     - ubtu18cis_rule_5_4_2
+#   tags:
+#     - level1-server
+#     - level1-workstation
+#     - automated
+#     - patch
+#     - rule_5.4.2
+#     - pamd
+#     - notimplemented
 
 - name: "AUTOMATED | 5.4.3 | PATCH | Ensure password reuse is limited"
   block:
