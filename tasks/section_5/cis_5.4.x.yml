@@ -100,10 +100,10 @@
 
     - name: "AUTOMATED | 5.4.2 | PATCH | Ensure lockout for failed password attempts is configured | Set pam_tally2.so settings if exists"
       pamd:
-        # name: common-auth
-        name: common-account
-        # type: auth
-        type: account
+        name: common-auth
+        # name: common-account
+        type: auth
+        # type: account
         control: required
         module_path: pam_tally2.so
         module_arguments: "onerr=fail
@@ -115,10 +115,10 @@
 
     - name: "AUTOMATED | 5.4.2 | PATCH | Ensure lockout for failed password attempts is configured | Set pam_tally2.so settings if does not exist"
       lineinfile:
-        # path: /etc/pam.d/common-auth
-        path: /etc/pam.d/common-account
-        # line: 'auth       required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900'
-        line: "account       required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900"
+        path: /etc/pam.d/common-auth
+        # path: /etc/pam.d/common-account
+        line: "auth       required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900"
+        # line: "account       required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900"
         insertafter: "^# end of pam-auth-update config"
       when: ubtu18cis_5_4_2_pam_tally2_state | length == 0
 
