@@ -98,20 +98,20 @@
       failed_when: false
       register: ubtu18cis_5_4_2_pam_tally2_state
 
-    - name: "AUTOMATED | 5.4.2 | PATCH | Ensure lockout for failed password attempts is configured | Set pam_tally2.so settings if exists"
-      pamd:
-        name: common-auth
-        # name: common-account
-        type: auth
-        # type: account
-        control: required
-        module_path: pam_tally2.so
-        module_arguments: "onerr=fail
-          audit
-          silent
-          deny=5
-          unlock_time=900"
-      when: ubtu18cis_5_4_2_pam_tally2_state.stdout | length > 0
+    # - name: "AUTOMATED | 5.4.2 | PATCH | Ensure lockout for failed password attempts is configured | Set pam_tally2.so settings if exists"
+    #   pamd:
+    #     name: common-auth
+    #     # name: common-account
+    #     type: auth
+    #     # type: account
+    #     control: required
+    #     module_path: pam_tally2.so
+    #     module_arguments: "onerr=fail
+    #       audit
+    #       silent
+    #       deny=5
+    #       unlock_time=900"
+    #   when: ubtu18cis_5_4_2_pam_tally2_state.stdout | length > 0
 
     - name: "AUTOMATED | 5.4.2 | PATCH | Ensure lockout for failed password attempts is configured | Set pam_tally2.so settings if does not exist"
       lineinfile:
@@ -129,10 +129,10 @@
         line: "{{ item.line }}"
         insertafter: "^# end of pam-auth-update config"
       with_items:
-        - {
-            regexp: "^accout.*requisite.*pam_deny.so",
-            line: "account    requisite pam_deny.so",
-          }
+        # - {
+        #     regexp: "^accout.*requisite.*pam_deny.so",
+        #     line: "account    requisite pam_deny.so",
+        #   }
         - {
             regexp: "^account.*required.*pam_tally.so",
             line: "account    required pam_tally.so",
